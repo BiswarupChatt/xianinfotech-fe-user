@@ -15,19 +15,16 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import ViewUserModal from "./ViewUserModal";
-import CreateUserModal from "./CreateUserModal";
 
 interface User {
   _id: string;
   name: string;
-  email: string;
   phone: string;
+  businessIncome: string;
   status: string;
-  view: string;
 }
 
-export default function UserListTable() {
+export default function BusinessPromoterTable() {
   const [rows, setRows] = useState<User[]>([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -36,7 +33,6 @@ export default function UserListTable() {
   const [loading, setLoading] = useState(true);
   const [viewModalOpen, setViewModalOpen] = useState(false);
   const [createModalOpen, setCreateModalOpen] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState<string>("");
 
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
@@ -91,18 +87,9 @@ export default function UserListTable() {
 
   return (
     <div>
-      <Box
-        sx={{ display: "flex", width: "100%", justifyContent: "space-between" }}
-      >
-        <Typography variant="h4">User Table</Typography>
-        <Button
-          variant="contained"
-          sx={{ backgroundColor: "#002855" }}
-          onClick={handleCreateModalToggle}
-        >
-          Add New User
-        </Button>
-      </Box>
+      <Typography variant="h5" sx={{ mt: 3 }}>
+        Get Help
+      </Typography>
       <TextField
         label="Search"
         variant="outlined"
@@ -127,31 +114,18 @@ export default function UserListTable() {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
                 <TableCell>Phone</TableCell>
+                <TableCell>Amount</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>View</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, index) => (
-                <TableRow key={index}>
+              {rows.map((row) => (
+                <TableRow key={row._id}>
                   <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.email}</TableCell>
                   <TableCell>{row.phone}</TableCell>
+                  <TableCell>₹{row.businessIncome}</TableCell>
                   <TableCell>{row.status}</TableCell>
-                  <TableCell>
-                    <Button
-                      variant="contained"
-                      sx={{ backgroundColor: "#002855" }}
-                      onClick={() => {
-                        handleViewModalToggle();
-                        setSelectedUserId(row._id);
-                      }}
-                    >
-                      View
-                    </Button>
-                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -167,16 +141,6 @@ export default function UserListTable() {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-
-      <ViewUserModal
-        handleViewModalToggle={handleViewModalToggle}
-        viewModalOpen={viewModalOpen}
-        selectedUserId={selectedUserId}
-      />
-      <CreateUserModal
-        handleCreateModalToggle={handleCreateModalToggle}
-        createModalOpen={createModalOpen}
       />
     </div>
   );

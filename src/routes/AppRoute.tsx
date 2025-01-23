@@ -1,13 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import UsersList from "../pages/user-list/UsersList";
+import { Routes, Route, Navigate } from "react-router-dom";
+import BusinessPromoters from "../pages/businessPromoters/BsinessPromoters";
 
 export default function AppRoute() {
   return (
     <Routes>
-      <Route path="/user-list" element={<UsersList />} />
-      <Route path="/trnsaction-list" element={<h2>Transaction List</h2>} />
-      <Route path="/video-management" element={<h2>Video Management</h2>} />
-      <Route path="/top-receivers-list" element={<h2>Top Recievers List</h2>} />
+      <Route path="/" element={<Navigate to="/business-promoters" />} />
+      <Route path="/dashboard" element={<h2>Dashboard</h2>} />
+      <Route path="/business-partners" element={<h2>Business Partners</h2>} />
+      <Route path="/business-promoters" element={<BusinessPromoters />} />
+      <Route path="/new-requests" element={<h2>New Requests</h2>} />
+      <Route path="/invoice" element={<h2>Invoice</h2>} />
+      <Route path="/renewal" element={<h2>Renewal</h2>} />
     </Routes>
   );
 }
