@@ -9,7 +9,6 @@ import {
   TablePagination,
   TextField,
   Paper,
-  Button,
   CircularProgress,
   Box,
   Typography,
@@ -31,8 +30,6 @@ export default function BusinessPromoterTable() {
   const [searchQuery, setSearchQuery] = useState("");
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [viewModalOpen, setViewModalOpen] = useState(false);
-  const [createModalOpen, setCreateModalOpen] = useState(false);
 
   const handleChangePage = (
     _event: React.MouseEvent<HTMLButtonElement> | null,
@@ -51,14 +48,6 @@ export default function BusinessPromoterTable() {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
     setPage(0);
-  };
-
-  const handleViewModalToggle = () => {
-    setViewModalOpen(!viewModalOpen);
-  };
-
-  const handleCreateModalToggle = () => {
-    setCreateModalOpen(!createModalOpen);
   };
 
   useEffect(() => {
