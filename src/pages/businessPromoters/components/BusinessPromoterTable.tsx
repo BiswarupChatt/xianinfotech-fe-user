@@ -92,10 +92,12 @@ export default function BusinessPromoterTable() {
         <Box
           display="flex"
           justifyContent="center"
+          flexDirection="column"
           alignItems="center"
           minHeight="200px"
         >
           <CircularProgress />
+          <Typography>It May take some time to load</Typography>
         </Box>
       ) : (
         <TableContainer component={Paper}>
