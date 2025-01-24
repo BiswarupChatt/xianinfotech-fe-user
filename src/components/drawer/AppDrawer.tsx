@@ -5,7 +5,7 @@ export default function AppDrawer() {
   const menuItems = [
     { label: "Dashboard", path: "/dashboard" },
     { label: "Business Partners", path: "/business-partners" },
-    { label: "Business Promoters", path: "/business-promoters" },
+    { label: "Business Promoters", path: "/" },
     { label: "New Requests", path: "/new-requests" },
     { label: "Invoice", path: "/invoice" },
     { label: "Renewal", path: "/renewal" },
