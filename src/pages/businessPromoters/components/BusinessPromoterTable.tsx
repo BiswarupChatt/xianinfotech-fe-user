@@ -54,7 +54,7 @@ export default function BusinessPromoterTable() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://localhost:3000/api/promoter", {
+        const response = await axios.get("https://xianinfotech-be.onrender.com/api/promoter", {
           params: {
             search: searchQuery,
             page: page + 1,
